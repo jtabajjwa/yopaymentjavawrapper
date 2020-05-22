@@ -94,6 +94,31 @@ public class YoPayments {
         this.pemPrivateKeyFilePath = pemPrivateKeyFilePath;
     }
     
+    //TODO: take a leaf from runAcWithdrawFunds method and implement acdeposit funds. 
+    /*
+    * @Param account: This is the mobile money number to send money to.
+    * @Param amount: The amount to send.
+    * @Param narrative: Simple description about the transaction.
+    * @Param reference: This is the external reference.
+    */
+    public YoPayments.YoPaymentsResponse runAcDepositFunds(String account, String amount, String narrative, 
+            String reference) {
+        return null;
+    }
+    
+    
+    
+    //TODO: implement transactionCheck Status
+    /*
+    * @Param transactionReference: This is the transaction reference which was returned in original request.
+    * 
+    */
+    public YoPayments.YoPaymentsResponse runAcTransactionCheckStatus(String transactionReference) {
+        return null;
+    }
+    
+    
+    
     /*
     * @Param account: This is the mobile money number to send money to.
     * @Param amount: The amount to send.
@@ -255,9 +280,9 @@ public class YoPayments {
                                 this.mnoTransactionReferenceId = eElement.getElementsByTagName("MNOTransactionReferenceId").item(0).getTextContent();
                                 
                         }
-                        if (eElement.getElementsByTagName("TranactionStatus") != null 
-                                && eElement.getElementsByTagName("TranactionStatus").item(0) != null) {
-                                this.transactionStatus = eElement.getElementsByTagName("TranactionStatus").item(0).getTextContent();
+                        if (eElement.getElementsByTagName("TransactionStatus") != null 
+                                && eElement.getElementsByTagName("TransactionStatus").item(0) != null) {
+                                this.transactionStatus = eElement.getElementsByTagName("TransactionStatus").item(0).getTextContent();
                            
                         }
                         break;
