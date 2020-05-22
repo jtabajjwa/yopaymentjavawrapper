@@ -24,9 +24,14 @@ import java.util.logging.Logger;
 public class VerifySignature {
     
     //Set here the correcct path where the certificate was stored.
-    static String PUBLIC_KEY_PATH = "/Users/josephtabajjwa/Desktop/Joe/projects/yopayments API/Java/yopaymentssdk/target/keys/Yo_Uganda_Public_Certificate.crt";
-    static String PUBLIC_KEY_PATH_SECONDARY = "/Users/josephtabajjwa/Desktop/Joe/projects/yopayments API/Java/yopaymentssdk/target/keys/Yo_Uganda_Secondary_Public_Certificate.crt";
-    //static String PRIVATE_KEY_PATH = "/Users/josephtabajjwa/Desktop/Joe/projects/yopayments API/Java/yopaymentssdk/target/keys/private_key.key";
+    static String PUBLIC_KEY_PATH = Paths.get(".")
+            .toAbsolutePath()
+            .normalize().toString()+"/target/keys/Yo_Uganda_Public_Certificate.crt";
+    
+    static String PUBLIC_KEY_PATH_SECONDARY = Paths.get(".")
+            .toAbsolutePath()
+            .normalize().toString()+"/target/keys/Yo_Uganda_Secondary_Public_Certificate.crt";
+    
     static String PRIVATE_KEY_PATH = Paths.get(".")
             .toAbsolutePath()
             .normalize().toString()+"/target/keys/private_key.key";
