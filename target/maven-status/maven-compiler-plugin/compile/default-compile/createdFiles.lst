@@ -1,2 +1,8 @@
+yo/co/ug/yopaymentssdk/YoPayments$YoPaymentsResponse.class
+yo/co/ug/yopaymentssdk/YoPaymentsUtils$1.class
 yo/co/ug/yopaymentssdk/YoPaymentsUtils.class
 yo/co/ug/yopaymentssdk/VerifySignature.class
+yo/co/ug/yopaymentssdk/YoPayments.class
+yo/co/ug/yopaymentssdk/YoPaymentsUtils$2.class
+yo/co/ug/yopaymentssdk/HttpRequestResponse.class
+yo/co/ug/yopaymentssdk/HttpRequestResponse$Header.class

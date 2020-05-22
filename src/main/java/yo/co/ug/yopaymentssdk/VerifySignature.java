@@ -26,10 +26,55 @@ public class VerifySignature {
     //Set here the correcct path where the certificate was stored.
     static String PUBLIC_KEY_PATH = "/Users/josephtabajjwa/Desktop/Joe/projects/yopayments API/Java/yopaymentssdk/target/keys/Yo_Uganda_Public_Certificate.crt";
     static String PUBLIC_KEY_PATH_SECONDARY = "/Users/josephtabajjwa/Desktop/Joe/projects/yopayments API/Java/yopaymentssdk/target/keys/Yo_Uganda_Secondary_Public_Certificate.crt";
-    public static void main(String[] args) {
+    //static String PRIVATE_KEY_PATH = "/Users/josephtabajjwa/Desktop/Joe/projects/yopayments API/Java/yopaymentssdk/target/keys/private_key.key";
+    static String PRIVATE_KEY_PATH = Paths.get(".")
+            .toAbsolutePath()
+            .normalize().toString()+"/target/keys/private_key.key";
+    
+    public static void main(String[] args) throws IOException {
         
-        normalVerification();
-        secondaryVerification();
+        //Test WithdrawRequest
+        testWithdawRequest();
+        
+        /*Uncomment the line below to test normalVerification*/
+        //normalVerification();
+        
+        
+        /*Uncomment the line below to test secondary verification*/
+        //secondaryVerification();
+    }
+    
+    static void testWithdawRequest() throws IOException {
+        YoPayments yp = new YoPayments(
+                "90003066053", 
+                "do9t-IqUe-FxJW-IgUI-NV1E-fDee-YhOQ-iikQ", 
+                "TEST", 
+                true);
+        
+        //Now set the private key path
+        yp.setPrivateKeyFilePath(PRIVATE_KEY_PATH);
+        
+        //Initiate a withdraw request
+        YoPayments.YoPaymentsResponse r = yp.runAcWithdrawFunds(
+                "256783086794", 
+                "500", 
+                "Java Sample", 
+                "R1004-"+YoPaymentsUtils.getRandomNumericString());
+        
+        //Display the response 
+        if (r != null) {
+            System.out.println("Status: "+r.status);
+            System.out.println("StatusCode: "+r.statusCode);
+            System.out.println("StatusMessage: "+r.statusMessage);
+            System.out.println("ErrorMessage: "+r.errorMessage);
+            System.out.println("TransactionStatus: "+r.transactionStatus);
+            System.out.println("TransactionReference: "+r.transactionReference);
+            System.out.println("NetworkReferenceId: "+r.mnoTransactionReferenceId);
+        }
+        
+        //Request Trace
+        System.out.println(yp.requestAndResponse);
+        
     }
     
     static void normalVerification() {
